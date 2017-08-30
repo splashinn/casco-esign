@@ -1,10 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      <router-link to="/">Go to Proposals (unsigned)</router-link>
-      <router-link to="/">Go to Proposals (signed)</router-link>
-    </p>
+    <h2>{{ msg }}</h2>
+    <router-link to="/proposals">Signed Proposals</router-link>
     <router-view></router-view>
   </div>
 </template>
@@ -14,7 +11,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to CASCO E-sign'
+      msg: 'CASCO E-sign'
     }
   }
 }
