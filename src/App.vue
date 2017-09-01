@@ -25,6 +25,8 @@
               <md-table-cell>{{contact.firstname}}</md-table-cell>
               <md-table-cell>{{contact.lastname}}</md-table-cell>
               <md-table-cell>{{contact.email}}</md-table-cell>
+              <md-table-cell>{{contact.proposalNumber}}</md-table-cell>
+              <md-table-cell>{{contact.client}}</md-table-cell>
             </md-table-row>
           </md-table-body>
         </md-table>
@@ -35,7 +37,22 @@
 
 <script>
 export default {
-  name: 'app'
+    name: 'app',
+    data: function () {
+      return {
+        contacts: []
+      }
+    },
+    methods: {
+      fillTable: function() {
+        this.contacts.push({firstname: 'Sebastian', lastname: 'Eschweiler', email: 's.eschweiler@mail.com', proposalNumber: '170802', client: 'Cooper Aerial'});
+        this.contacts.push({firstname: 'Bill', lastname: 'Smith', email: 'b.smith@mail.com', proposalNumber: '170804', client: 'Cooper Aerial'});
+        this.contacts.push({firstname: 'Ann', lastname: 'Parker', email: 'a.parker@mail.com', proposalNumber: '170803', client: 'Cooper Aerial'});
+      },
+      clearTable: function() {
+        this.contacts.splice(0, this.contacts.length);
+      }
+    }
 }
 </script>
 
