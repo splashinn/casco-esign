@@ -10,6 +10,8 @@
         <md-button class="md-raised md-primary" v-on:click="fillTable()">Filter Signed Proposals</md-button>
         <md-button class="md-raised md-primary" v-on:click="clearTable()">Filter Unsigned Proposals</md-button>
         <br />
+        <!-- <input id="input" type="text" v-model="newName">
+        <md-button class="md-raised md-primary" v-on:click="addName()">Add Client Information</md-button> -->
          <md-table>
           <md-table-header>
             <md-table-row>
@@ -40,6 +42,7 @@ export default {
     name: 'app',
     data: function () {
       return {
+        newName: '',
         contacts: []
       }
     },
@@ -51,6 +54,10 @@ export default {
       },
       clearTable: function() {
         this.contacts.splice(0, this.contacts.length);
+      },
+      addName() {
+        this.contacts.push(this.newName);
+        this.newName = '';
       }
     }
 }
