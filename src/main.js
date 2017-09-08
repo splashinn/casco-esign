@@ -1,23 +1,59 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.css'
-import axios from 'axios'
+/* ============
+ * Main File
+ * ============
+ *
+ * Will initialize the application.
+ */
 
-Vue.use(VueMaterial)
-Vue.use(axios)
+import Vue from 'vue';
 
-Vue.config.productionTip = false
+/* ============
+ * Plugins
+ * ============
+ *
+ * Import and bootstrap the plugins.
+ */
 
-const API = 'https://cuddly-robot-api.herokuapp.com/v1/cost_proposals'
+import './plugins/vuex';
+import './plugins/axios';
+import './plugins/vue-i18n';
+import './plugins/vue-router';
+import './plugins/vuex-router-sync';
+import './plugins/bootstrap';
+import './plugins/font-awesome';
 
-/* eslint-disable no-new */
+/* ============
+ * Styling
+ * ============
+ *
+ * Import the application styling.
+ * Stylus is used for this boilerplate.
+ *
+ * If you don't want to use Stylus, that's fine!
+ * Replace the stylus directory with the CSS preprocessor you want.
+ * Import the entry point here & install the webpack loader.
+ *
+ * It's that easy...
+ *
+ * http://stylus-lang.com/
+ */
+
+import './assets/stylus/app.styl';
+
+/* ============
+ * Main App
+ * ============
+ *
+ * Last but not least, we import the main application.
+ */
+
+import App from './app';
+import store from './store';
+
+store.dispatch('auth/check');
+
+Vue.config.productionTip = false;
+
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
-})
+  render: h => h(App),
+}).$mount('#app');
